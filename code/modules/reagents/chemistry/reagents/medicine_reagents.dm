@@ -1831,3 +1831,19 @@
 		if(affected_mob.adjustStaminaLoss(10 * REM * seconds_per_tick, updating_stamina = FALSE))
 			. = UPDATE_MOB_HEALTH
 	affected_mob.adjust_disgust(-10 * REM * seconds_per_tick)
+
+/datum/reagent/medicine/nanogen
+	name = "Nanogen"
+	description = "A nanite-based medicine that replaces damaged limbs with synthetic ones."
+	color = "#00FF00"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/nanogen/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	var/mob/living/carbon/person = affected_mob
+	for(var/slot in person.bodyparts)
+		var/obj/item/bodypart/part = person.bodyparts[slot]
+		if(!part || part.wounds)
+			priority_announce("Nanogen nanites are repairing [person]'s [slot]!", "Nanite Activity Detected")
+			return UPDATE_MOB_HEALTH
+
+///datum/reagent/medicine/nanogen/proc/replace_part_with_bionic(affected_mob, part)

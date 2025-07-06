@@ -359,13 +359,3 @@
 	inhand_icon_state = "atropen"
 	base_icon_state = "atropen"
 	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 10)
-
-/obj/item/reagent_containers/hypospray/medipen/regenerative
-	name = "Nanogenerative Medipen"
-	desc = "A medipen containing a powerful serum, which replaces damaged limbs and organs with cybernetics."
-	icon_state = "stimulants"
-	inhand_icon_state = "stimulants"
-	base_icon_state = "stimulants"
-	volume = 15
-	amount_per_transfer_from_this = 15
-	list_reagents = list(/datum/reagent/medicine/Nanogen = 15)
